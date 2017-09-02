@@ -5,7 +5,7 @@ import Ticket from '../features/ticket/containers/Ticket';
 const Main = () => (
   <main>
     <Switch>
-        <Route exact path="/tickets/new" component={Ticket}></Route>
+        <Route path="/" component={Ticket}></Route>
     </Switch>
   </main>
 )
