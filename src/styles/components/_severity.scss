@@ -13,12 +13,12 @@
   outline: none;
 }
 
-.severity__item__decription {
-  margin-left: 13px;
+.severity__item--selected {
+  border: 1px solid $picton-blue;
 }
 
-.severity__item:focus {
-  border: 1px solid $picton-blue;
+.severity__item__decription {
+  margin-left: 13px;
 }
 
 .severity__item:first-child {

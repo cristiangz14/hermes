@@ -6,37 +6,61 @@ class Severity extends Component {
     super(props);
 
     this.state = {
-      severities: {
+      severity: {
         low: {
-          priority: 'Low',
+          label: 'Low',
+          value: 'low',
           description: 'Product question',
           className: 'severity__item--low'
         },
         normal: {
-          priority: 'Normal',
+          label: 'Normal',
+          value: 'normal',
           description: 'General support issue',
           className: 'severity__item--normal'
         },
         high: {
-          priority: 'Normal',
+          label: 'Normal',
+          value: 'high',
           description: 'Product application issue',
           className: 'severity__item--high'
         },
         urgent: {
-          priority: 'Urgent',
+          label: 'Urgent',
+          value: 'urgent',
           description: 'Product application offline',
           className: 'severity__item--urgent'
         }
-      }
+      },
+      selected: ''
     }
+
+    this.onClick = this.onClick.bind(this);
+  }
+
+  onClick(severity) {
+    const { input: { onChange } } = this.props;
+    onChange(severity.value);
+    this.setState({'selected': severity.value})
+  }
+
+  getItemClassName(severity) {
+    const { selected } = this.state;
+    let className = "severity__item";
+    if(severity.value === selected) {
+      className += " severity__item--selected";
+    }
+    className += " " + severity.className;
+    return className;
   }
 
   renderItem(severity) {
+
     return (
-      <button type="button" className={"severity__item " + severity.className}>
+      <button type="button" onClick={() => this.onClick(severity)} className={this.getItemClassName(severity)}>
         <div className="severity__item__priority">
           <span className="severity__item__bullet"></span>
-          <span className="severity__item__label">{severity.priority}</span>
+          <span className="severity__item__label">{severity.label}</span>
         </div>
         <div className="severity__item__decription">{severity.description}</div>
       </button>
@@ -44,13 +68,13 @@ class Severity extends Component {
   }
 
   render() {
-    const { severities } = this.state;
+    const { severity } = this.state;
     return (
       <div className="severity">
-        {this.renderItem(severities.low)}
-        {this.renderItem(severities.normal)}
-        {this.renderItem(severities.high)}
-        {this.renderItem(severities.urgent)}
+        {this.renderItem(severity.low)}
+        {this.renderItem(severity.normal)}
+        {this.renderItem(severity.high)}
+        {this.renderItem(severity.urgent)}
       </div>
     )
   }
