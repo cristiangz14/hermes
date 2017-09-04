@@ -31,7 +31,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: "style!css"
+        loader: "style-loader"
       },
       {
         test: /\.scss$/,
@@ -42,6 +42,10 @@ module.exports = {
         }, {
             loader: "sass-loader" // compiles Sass to CSS
         }]
+      },
+      {
+        test: /\.(eot|svg|ttf|woff|woff2|gif)$/,
+        loader: 'file-loader',
       }
     ]
   },

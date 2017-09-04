@@ -10,14 +10,19 @@ import {
 
 class Ticket extends Component {
   submit(values) {
-    this.props.submitTicket(values);
+    values.requestedBy = values.requestedBy.map((item) => {
+      return item.email;
+    })
     console.log(values);
+    //this.props.submitTicket(values);
+
   }
   render() {
-    const { isSumitting, submitTicket } = this.props;
+    const { isSumitting, submitTicket, customers } = this.props;
     const props = {
-      onSubmit: submitTicket,
-      isSumitting
+      onSubmit: this.submit,
+      isSumitting,
+      customers
     }
     return (
       <div className="ticket">
@@ -30,7 +35,8 @@ class Ticket extends Component {
 
 function mapStateToProps(state) {
   return {
-    isSumitting: state.ticket.isSumitting
+    isSumitting: state.ticket.isSumitting,
+    customers: state.customers
   }
 }
 

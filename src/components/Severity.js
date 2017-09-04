@@ -32,7 +32,7 @@ class Severity extends Component {
           className: 'severity__item--urgent'
         }
       },
-      selected: ''
+      selected: props.value || ''
     }
 
     this.onClick = this.onClick.bind(this);
@@ -46,12 +46,8 @@ class Severity extends Component {
 
   getItemClassName(severity) {
     const { selected } = this.state;
-    let className = "severity__item";
-    if(severity.value === selected) {
-      className += " severity__item--selected";
-    }
-    className += " " + severity.className;
-    return className;
+    const selectedClass = severity.value === selected ? 'severity__item--selected' : '';
+    return `severity__item ${selectedClass} ${severity.className}`;
   }
 
   renderItem(severity) {
