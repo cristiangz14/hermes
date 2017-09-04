@@ -1,5 +1,5 @@
 .rw-multiselect-taglist > li {
-  background-color: #fff;
+  background-color: $white;
   border: none;
 }
 
@@ -8,7 +8,7 @@
 }
 
 ul.rw-list .rw-list-empty {
-  color: #333333;
+  color: $mine-shaft;
   outline: none;
   padding-bottom: 15px;
   padding-left: 15px;
@@ -20,7 +20,7 @@ ul.rw-list {
 }
 
 ul.rw-list > li.rw-list-option {
-  color: #333333;
+  color: $mine-shaft;
   outline: none;
   padding-bottom: 15px;
   padding-left: 15px;
@@ -28,7 +28,7 @@ ul.rw-list > li.rw-list-option {
 }
 
 ul.rw-list > li.rw-list-option:hover {
-  background-color: #EBF5FF;
+  background-color: $zumthor;
   border: none;
 }
 
@@ -38,22 +38,22 @@ ul.rw-list > li.rw-list-option.rw-state-focus {
 }
 
 .rw-multiselect-taglist > li .rw-tag-btn {
-  background-color: #F5F7F9;
-  border: 1px solid #DDDDDD;
+  background-color: $athens-gray;
+  border: 1px solid $alto;
   border-bottom-left-radius: 2px;
   border-top-left-radius: 2px;
-  color: #999999;
+  color: $dusty-gray;
   float: left;
   font-size: 9px;
   padding: 0 7px;
 }
 
 .rw-multiselect-taglist > li .rw-tag {
-  background-color: #F5F7F9;
-  border: 1px solid #DDDDDD;
+  background-color: $athens-gray;
+  border: 1px solid $alto;
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px;
-  color: #7E7F80;
+  color: $rolling-stone;
   display: inline-block;
   font-size: 12px;
   margin-left: -1px;
