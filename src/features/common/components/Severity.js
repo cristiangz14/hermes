@@ -39,7 +39,7 @@ class Severity extends Component {
   }
 
   onClick(severity) {
-    const { input: { onChange } } = this.props;
+    const { onChange } = this.props;
     onChange(severity.value);
     this.setState({'selected': severity.value})
   }

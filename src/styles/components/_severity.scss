@@ -1,9 +1,11 @@
 .severity {
+  display: flex;
   width: 100%;
 }
 
 .severity__item {
   border: 1px solid $iron;
+  flex-basis: 100%;
   font-size: 10px;
   display: inline-block;
   padding: 1.4em;
@@ -11,52 +13,52 @@
   background-color: transparent;
   text-align: left;
   outline: none;
-}
 
-.severity__item--selected {
-  border: 1px solid $picton-blue;
-  margin-right: 0;
-}
+  &--selected {
+    border: 1px solid $picton-blue;
+    margin-right: 0;
+  }
 
-.severity__item__decription {
-  margin-left: 13px;
-}
+  .severity__item__decription {
+    margin-left: 13px;
+  }
 
-.severity__item:first-child {
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
-}
+  &:first-child {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+  }
 
-.severity__item:last-child {
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
-}
+  &:last-child {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+  }
 
-.severity__item__bullet {
-  border-radius: 4px;
-  display: inline-block;
-  height: 8px;
-  width: 8px;
-  margin-right: 5px;
-}
+  .severity__item__bullet {
+    border-radius: 4px;
+    display: inline-block;
+    height: 8px;
+    width: 8px;
+    margin-right: 5px;
+  }
 
-.severity__item__label {
-  font-weight: bold;
-}
+  .severity__item__label {
+    font-weight: bold;
+  }
 
+  &.severity__item--low .severity__item__bullet {
+    background-color: $shuttle-gray;
+  }
 
-.severity__item.severity__item--low .severity__item__bullet {
-  background-color: $shuttle-gray;
-}
+  &.severity__item--normal .severity__item__bullet {
+    background-color: $persian-green;
+  }
 
-.severity__item.severity__item--normal .severity__item__bullet {
-  background-color: $persian-green;
-}
+  &.severity__item--high .severity__item__bullet {
+    background-color: $golden-dream;
+  }
 
-.severity__item.severity__item--high .severity__item__bullet {
-  background-color: $golden-dream;
-}
+  &.severity__item--urgent .severity__item__bullet {
+    background-color: $flamingo;
+  }
 
-.severity__item.severity__item--urgent .severity__item__bullet {
-  background-color: $flamingo;
 }

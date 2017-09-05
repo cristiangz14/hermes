@@ -9,22 +9,18 @@ const isEmail = (email) => {
 const validate = values => {
   const errors = {}
 
-
   if (isBlank(values.subject)) {
-    errors.subject = 'Required'
+    errors.subject = 'Please input the subject'
   }
 
   if (isBlank(values.severity)) {
-    errors.severity = 'Required'
+    errors.severity = 'Please choose the severity'
   }
 
   if (isBlank(values.description)) {
-    errors.description = 'Required'
+    errors.description = 'Please input the description'
   }
 
-  /*if (!values.requestedBy || !values.requestedBy.length) {
-    errors.requestedBy = 'Required'
-  }*/
   return errors
 }
 

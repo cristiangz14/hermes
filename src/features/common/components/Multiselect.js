@@ -12,16 +12,6 @@ class TagItem extends Component {
   }
 }
 
-class ListItem extends Component {
-
-  render() {
-    const { text } = this.props;
-    return (
-      <span>{text}</span>
-    )
-  }
-}
-
 class Multiselect extends Component {
 
   render() {
@@ -32,7 +22,6 @@ class Multiselect extends Component {
         textField={textField}
         valueField={valueField}
         tagComponent={({item}) => (<TagItem item={item} textField={textField}/>)}
-        itemComponent={ListItem}
         onChange={value => input.onChange(value)}
         value={input.value || []}
         data={data}/>

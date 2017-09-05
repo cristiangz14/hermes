@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import Ticket from '../features/ticket/containers/Ticket';
+import Ticket from '../../ticket/containers/Ticket';
 
 const Main = () => (
   <main>

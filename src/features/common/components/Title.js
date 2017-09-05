@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 
 class Title extends Component {
   render() {
-    const { text } = this.props;
+    const { text, className } = this.props;
     return (
-      <h1 className="title">{text}</h1>
+      <h1 className={className}>{text}</h1>
     )
   }
 }

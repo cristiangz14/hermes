@@ -1,62 +1,64 @@
-.rw-multiselect-taglist > li {
-  background-color: $white;
-  border: none;
+.rw-multiselect-taglist {
+  li {
+    background-color: $white;
+    border: none;
+
+    .rw-tag {
+      background-color: $athens-gray;
+      border: 1px solid $alto;
+      border-top-right-radius: 2px;
+      border-bottom-right-radius: 2px;
+      color: $rolling-stone;
+      display: inline-block;
+      font-size: 12px;
+      margin-left: -1px;
+      padding-left: 3px;
+      padding-right: 3px;
+    }
+
+    .rw-tag-btn {
+      background-color: $athens-gray;
+      border: 1px solid $alto;
+      border-bottom-left-radius: 2px;
+      border-top-left-radius: 2px;
+      color: $dusty-gray;
+      float: left;
+      font-size: 9px;
+      padding: 0 7px;
+    }
+  }
+}
+
+ul.rw-list {
+  padding: 0;
+
+  .rw-list-empty {
+    color: $mine-shaft;
+    outline: none;
+    padding-bottom: 15px;
+    padding-left: 15px;
+    padding-top: 15px;
+  }
+
+  li.rw-list-option {
+    color: $mine-shaft;
+    outline: none;
+    padding-bottom: 15px;
+    padding-left: 15px;
+    padding-top: 15px;
+
+    &:hover {
+      background-color: $zumthor;
+      border: none;
+    }
+
+    &.rw-state-focus {
+      background-color: none;
+      border: none;
+    }
+  }
 }
 
 .rw-popup.rw-widget {
   padding: 0;
-}
-
-ul.rw-list .rw-list-empty {
-  color: $mine-shaft;
-  outline: none;
-  padding-bottom: 15px;
-  padding-left: 15px;
-  padding-top: 15px;
-}
-
-ul.rw-list {
-  padding: 0
-}
-
-ul.rw-list > li.rw-list-option {
-  color: $mine-shaft;
-  outline: none;
-  padding-bottom: 15px;
-  padding-left: 15px;
-  padding-top: 15px;
-}
-
-ul.rw-list > li.rw-list-option:hover {
-  background-color: $zumthor;
-  border: none;
-}
-
-ul.rw-list > li.rw-list-option.rw-state-focus {
-  background-color: none;
-  border: none;
-}
-
-.rw-multiselect-taglist > li .rw-tag-btn {
-  background-color: $athens-gray;
-  border: 1px solid $alto;
-  border-bottom-left-radius: 2px;
-  border-top-left-radius: 2px;
-  color: $dusty-gray;
-  float: left;
-  font-size: 9px;
-  padding: 0 7px;
-}
-
-.rw-multiselect-taglist > li .rw-tag {
-  background-color: $athens-gray;
-  border: 1px solid $alto;
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px;
-  color: $rolling-stone;
-  display: inline-block;
-  font-size: 12px;
-  margin-left: -1px;
-  padding-left: 3px;
-  padding-right: 3px;
 }
