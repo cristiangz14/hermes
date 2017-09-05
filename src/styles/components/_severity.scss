@@ -1,19 +1,22 @@
 .severity {
   display: flex;
   width: 100%;
-}
 
-.form-group.has-error .severity {
-  border: 1px solid #ff3e00;
-  padding-right: 1px;
-  border-radius: 4px;
+  .form-group.has-error & {
+    border: 1px solid #ff3e00;
+    padding-right: 1px;
+    border-radius: 4px;
+  }
+
+  @media screen and (max-width: $screen-sm-min) {
+    display: block;
+  }
 }
 
 .severity__item {
   border: 1px solid $iron;
   flex-basis: 100%;
   font-size: 0.9em;
-  display: inline-block;
   padding: 1.4em;
   margin-right: -1px;
   background-color: transparent;
@@ -21,12 +24,24 @@
   outline: none;
   line-height: 15px;
 
+  @media screen and (max-width: $screen-sm-min) {
+    display: block;
+    width: 100%;
+    margin-right: 0;
+    margin-top: -1px;
+  }
+
   &--selected {
     border: 1px solid $picton-blue;
     margin-right: 0;
 
     & + .severity__item {
       border-left: 0;
+
+      @media screen and (max-width: $screen-sm-min) {
+        border-left: 1px solid $iron;
+        border-top: 0;
+      }
     }
   }
 
@@ -37,11 +52,23 @@
   &:first-child {
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
+
+    @media screen and (max-width: $screen-sm-min) {
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+      border-bottom-left-radius: 0;
+    }
   }
 
   &:last-child {
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
+
+    @media screen and (max-width: $screen-sm-min) {
+      border-bottom-left-radius: 4px;
+      border-bottom-right-radius: 4px;
+      border-top-right-radius: 0;
+    }
   }
 
   .severity__item__bullet {
