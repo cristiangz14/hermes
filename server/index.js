@@ -25,7 +25,14 @@ const plugins = [{
 
 const server = new Hapi.Server();
 
-server.connection({ port: 3000, host: 'localhost' });
+const PRODUCTION = process.env.NODE_ENV === 'production';
+const PORT = process.env.PORT;
+
+const connectionOpts = () => {
+  PRODUCTION ? {port: PORT} : {port: 3000, host: 'localhost'}
+}
+
+server.connection(connectionOpts());
 
 server.register(plugins, (err) => {
 
