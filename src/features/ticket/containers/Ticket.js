@@ -17,7 +17,7 @@ class Ticket extends Component {
     values.requestedBy = values.requestedBy.map((item) => {
       return item.value;
     })
-    console.log(values);
+
     this.props.submitTicket(values);
   }
 

@@ -24,13 +24,13 @@ export function submitFailure() {
 
 export function submitTicket(ticket) {
   return function(dispatch) {
-    dispatch(submitting())
-    /*axios.post('/api/tickets', ticket)
+    dispatch(submitting());
+    axios.post('/api/tickets', ticket)
     .then(function(response) {
         dispatch(submitSuccess());
     })
     .catch(function(err){
       dispatch(submitFailure());
-    })*/
+    })
   }
 }

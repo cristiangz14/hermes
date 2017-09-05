@@ -13,7 +13,7 @@ const MultiSelect = ({ input, value, label, placeholder, options, meta: { touche
         options={options}
         {...input}
         onBlur={() => input.onBlur(value)}/>
-        {touched && error && <div className="form__explain">{error}</div>}
+        {touched && error && <div className="help-block">{error}</div>}
     </div>
   </div>
 )

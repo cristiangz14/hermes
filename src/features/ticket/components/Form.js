@@ -20,14 +20,14 @@ let TicketForm = props => {
   return (
     <form className="col-xs-7 col-xs-offset-1" onSubmit={ handleSubmit }>
       <Title text="New Ticket"/>
-      <Field name="subject" label="Subject" type="text" placeholder="Give a subject to your ticket" component={Input} />
+      <Field name="subject" label="Subject *" type="text" placeholder="Give a subject to your ticket" component={Input} />
       <Field name="requestedBy"
         label="Requested by"
         placeholder="Choose a requester"
         options={options}
         component={MultiSelect}/>
-      <Field name="severity" label="Severity" component={Severity}/>
-      <Field name="description" label="Description" placeholder="Describe your problem" component={TextArea} />
+      <Field name="severity" label="Severity *" component={Severity}/>
+      <Field name="description" label="Description *" placeholder="Describe your problem" rows={4} component={TextArea} />
 
       <div className="form-group">
         <button type="submit" className="btn btn-primary">{isSubmitting ? 'SUBMITTING' : 'SUBMIT'}</button>

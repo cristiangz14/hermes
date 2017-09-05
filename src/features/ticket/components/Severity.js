@@ -6,7 +6,7 @@ const Severity = ({ input, label, value, meta: { touched, error } }) => (
     <label className="control-label">{label}</label>
     <div>
       <SeverityComponent onChange={input.onChange} value={value}/>
-      {touched && error && <div className="form__explain">{error}</div>}
+      {touched && error && <div className="help-block">{error}</div>}
     </div>
   </div>
 )
