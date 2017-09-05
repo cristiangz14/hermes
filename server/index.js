@@ -1,5 +1,4 @@
 const Hapi = require('hapi');
-const inert = require('inert');
 const Good = require('good');
 
 const plugins = [{
@@ -19,7 +18,9 @@ const plugins = [{
         }
     }
 }, {
-  register: inert,
+  register: require('inert'),
+}, {
+  register: require('h2o2')
 }];
 
 const server = new Hapi.Server();
@@ -32,6 +33,7 @@ server.register(plugins, (err) => {
         throw err;
     }
 
+    //Static files
     server.route({
       method: 'GET',
       path: '/public/{params*}',
@@ -42,11 +44,26 @@ server.register(plugins, (err) => {
       }
     });
 
+    //API Proxy
+    server.route({
+      method: '*',
+      path: '/api/{params*}',
+      handler: {
+        proxy: {
+          host: 'localhost',
+          port: 3001,
+          protocol: 'http',
+          passThrough: true,
+        },
+      }
+    });
+
+    //Entry point
     server.route({
         method: 'GET',
         path: '/{params*}',
         handler: function (request, reply) {
-            reply.file('./public/index.html');
+            reply.file('./index.html');
         }
     });
 
