@@ -1,16 +1,16 @@
 {
   "name": "hermes_client",
   "version": "1.0.0",
-  "description": "Client SPA for hermes project",
-  "main": "index.js",
+  "description": "Client SPA for Hermes project",
+  "main": "server/index.js",
   "engines": {
-      "node": "6.11.1"
+    "node": "6.11.1"
   },
   "scripts": {
     "start": "npm run build:prod && node server/index",
     "dev": "webpack-dev-server",
-    "build:dev": "webpack --config webpack.config.js",
-    "build:prod": "webpack --config webpack.config.prod.js"
+    "build:dev": "webpack --config webpack.config.js --colors",
+    "build:prod": "webpack --config webpack.prod.config.js --colors"
   },
   "repository": {
     "type": "git",
