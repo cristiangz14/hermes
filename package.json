@@ -8,9 +8,9 @@
   },
   "scripts": {
     "start": "npm run build:prod && node server/index",
-    "start-dev": "webpack-dev-server",
-    "build:dev": "./node_modules/.bin/webpack --config webpack.config.js",
-    "build:prod": "./node_modules/.bin/webpack --config webpack.config.prod.js"
+    "dev": "webpack-dev-server",
+    "build:dev": "webpack --config webpack.config.js",
+    "build:prod": "webpack --config webpack.config.prod.js"
   },
   "repository": {
     "type": "git",
