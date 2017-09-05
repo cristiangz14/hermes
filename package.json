@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Client SPA for hermes project",
   "main": "index.js",
+  "engines": {
+      "node": "6.11.1"
+  },
   "scripts": {
     "start": "npm run build:prod && node server/index",
     "start-dev": "webpack-dev-server",
