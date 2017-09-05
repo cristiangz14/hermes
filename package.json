@@ -7,8 +7,9 @@
     "node": "6.11.1"
   },
   "scripts": {
-    "start": "npm run build:prod && node server/index",
+    "start": "npm run build && node server/index",
     "dev": "webpack-dev-server",
+    "build": "cross-env NODE_ENV=production webpack --config webpack.config.js --colors",
     "build:dev": "webpack --config webpack.config.js --colors",
     "build:prod": "webpack --config webpack.prod.config.js --colors"
   },
@@ -44,6 +45,7 @@
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-3": "^6.24.1",
+    "cross-env": "^5.0.5",
     "css-loader": "^0.28.7",
     "file-loader": "^0.11.2",
     "node-sass": "^4.5.3",
