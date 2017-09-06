@@ -1,5 +1,6 @@
 const Hapi = require('hapi');
 const Good = require('good');
+const env = require('./utils/env');
 
 const plugins = [{
     register: Good,
@@ -25,7 +26,7 @@ const plugins = [{
 
 const server = new Hapi.Server();
 
-server.connection({port: process.env.PORT || 3000});
+server.connection({port: env.PORT || 3000});
 
 server.register(plugins, (err) => {
 
@@ -50,9 +51,9 @@ server.register(plugins, (err) => {
       path: '/api/{params*}',
       handler: {
         proxy: {
-          host: 'localhost',
-          port: 3001,
-          protocol: 'http',
+          host: env.API_HOST,
+          port: env.API_PORT,
+          protocol: env.API_PROTOCOL,
           passThrough: true,
         },
       }

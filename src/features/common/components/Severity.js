@@ -6,33 +6,34 @@ class Severity extends Component {
     super(props);
 
     this.state = {
-      severity: {
-        low: {
-          label: 'Low',
-          value: 'low',
-          description: 'Product question',
-          className: 'severity__item--low'
-        },
-        normal: {
-          label: 'Normal',
-          value: 'normal',
-          description: 'General support issue',
-          className: 'severity__item--normal'
-        },
-        high: {
-          label: 'Normal',
-          value: 'high',
-          description: 'Product application issue',
-          className: 'severity__item--high'
-        },
-        urgent: {
-          label: 'Urgent',
-          value: 'urgent',
-          description: 'Product application offline',
-          className: 'severity__item--urgent'
-        }
-      },
       selected: props.value || ''
+    }
+
+    this.severity = {
+      low: {
+        label: 'Low',
+        value: 'low',
+        description: 'Product question',
+        className: 'severity__item--low'
+      },
+      normal: {
+        label: 'Normal',
+        value: 'normal',
+        description: 'General support issue',
+        className: 'severity__item--normal'
+      },
+      high: {
+        label: 'Normal',
+        value: 'high',
+        description: 'Product application issue',
+        className: 'severity__item--high'
+      },
+      urgent: {
+        label: 'Urgent',
+        value: 'urgent',
+        description: 'Product application offline',
+        className: 'severity__item--urgent'
+      }
     }
 
     this.onClick = this.onClick.bind(this);
@@ -64,7 +65,7 @@ class Severity extends Component {
   }
 
   render() {
-    const { severity } = this.state;
+    const severity = this.severity;
     return (
       <div className="severity">
         {this.renderItem(severity.low)}

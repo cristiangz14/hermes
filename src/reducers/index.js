@@ -1,13 +1,12 @@
 import { combineReducers } from 'redux';
 import ticketReducers from '../features/ticket/reducers';
+import authReducers from '../features/auth/reducers';
+import customerReducers from '../features/customer/reducers';
 import { reducer as formReducer } from 'redux-form';
-
-const fakeCustomerReducers = function(state = {}, action) {
-  return state;
-}
 
 export default combineReducers({
   ticket: ticketReducers,
   form: formReducer,
-  customers: fakeCustomerReducers
+  customers: customerReducers,
+  auth: authReducers
 });

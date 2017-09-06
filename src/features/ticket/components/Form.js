@@ -18,7 +18,7 @@ let TicketForm = props => {
   });
 
   return (
-    <form className="col-xs-7 col-xs-offset-1" onSubmit={ handleSubmit }>
+    <form onSubmit={ handleSubmit }>
       <Title text="New Ticket"/>
       <Field name="subject" label="Subject *" type="text" placeholder="Give a subject to your ticket" component={Input} />
       <Field name="requestedBy"

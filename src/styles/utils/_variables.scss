@@ -15,12 +15,10 @@ $pomegranate: #f04134;
 $silver: #ccc;
 $nobel: #b3b3b3;
 
-// Breakpoints
-$screen-lg-min: 1200px;
-$screen-md-min: 992px;
-$screen-sm-min: 798px;
+$shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
 
-// Media queries
-$large: min-width $screen-lg-min;
-$medium: min-width $screen-md-min;
-$small: min-width $screen-sm-min;
+// Breakpoints
+$screen-xlg-min: 1200px;
+$screen-lg-min: 992px;
+$screen-md-min: 768px;
+$screen-sm-min: 576px;
