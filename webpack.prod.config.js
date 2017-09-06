@@ -39,7 +39,12 @@ module.exports = {
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': '"production"'
-    }),
+      'process.env': {
+        'NODE_ENV': '"production"',
+        'AUTH_DOMAIN': JSON.stringify(process.env.AUTH_DOMAIN),
+        'AUTH_CALLBACK_URL': JSON.stringify(process.env.AUTH_CALLBACK_URL),
+        'AUTH_CLIENT_ID': JSON.stringify(process.env.AUTH_CLIENT_ID)
+      }
+   }),
   ],
 }
