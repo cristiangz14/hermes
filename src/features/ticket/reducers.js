@@ -6,7 +6,8 @@ import {
 
 const initialState = {
   isSubmitting: false,
-  submitFailed: false
+  submitFailed: false,
+  submitSuccess: false,
 }
 
 export default function reducers(state = initialState , action) {
@@ -15,21 +16,27 @@ export default function reducers(state = initialState , action) {
       return {
         ...state,
         isSubmitting: true,
-        submitFailed: false
+        submitFailed: false,
+        submitSuccess: false,
+        message: ''
       };
       break;
     case SUBMIT_TICKET_SUCCESS:
       return {
         ...state,
         isSubmitting: false,
-        submitFailed: false
+        submitFailed: false,
+        submitSuccess: true,
+        message: action.message
       };
       break;
     case SUBMIT_TICKET_FAILURE:
       return {
         ...state,
         isSubmitting: false,
-        submitFailed: true
+        submitFailed: true,
+        submitSuccess: false,
+        message: action.message
       };
       break;
     default:

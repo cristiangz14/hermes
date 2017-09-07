@@ -11,30 +11,49 @@ class Ticket extends Component {
   constructor(props) {
     super(props);
     this.submit = this.submit.bind(this);
+    this.mapToCustomer = this.mapToCustomer.bind(this);
   }
 
   submit(values) {
-    const { profile } = this.props;
+    const { profile, customers } = this.props;
 
-    values.requestedBy = values.requestedBy || [];
-
-    values.requestedBy = values.requestedBy.map((item) => {
-      return item.value;
-    });
-
-    if(!values.requestedBy.length) {
-      values.requestedBy.push(profile.name);
+    const submittedBy = {
+      name: profile.nickname,
+      email: profile.name
     }
 
-    this.props.submitTicket(values);
+    const requestedBy = this.mapToCustomer(values.requestedBy);
+
+    this.props.submitTicket({...values, requestedBy, submittedBy});
+  }
+
+  mapToCustomer( value ) {
+    if(!value) {
+      return null;
+    }
+
+    const { customers } = this.props;
+
+    const index = customers.findIndex((customer) => {
+      return customer.email === value.value;
+    });
+
+    if(index >= 0) {
+      return customers[index];
+    }
+
+    return null;
   }
 
   render() {
-    const { isSubmitting, submitTicket, customers } = this.props;
+    const { isSubmitting, submitSuccess, submitFailed, message, submitTicket, customers } = this.props;
     const props = {
       onSubmit: this.submit,
       isSubmitting,
-      customers
+      customers,
+      submitSuccess,
+      submitFailed,
+      message
     }
 
     return (
@@ -46,6 +65,9 @@ class Ticket extends Component {
 function mapStateToProps(state) {
   return {
     isSubmitting: state.ticket.isSubmitting,
+    submitFailed: state.ticket.submitFailed,
+    submitSuccess: state.ticket.submitSuccess,
+    message: state.ticket.message,
     customers: state.customers,
     profile: state.auth.profile
   }

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { reset } from 'redux-form';
 import AuthService from '../auth/AuthService';
 
 export const SUBMIT_TICKET_REQUEST = 'SUBMIT_TICKET_REQUEST';
@@ -13,15 +14,17 @@ export function submitting() {
   }
 }
 
-export function submitSuccess() {
+export function submitSuccess(message) {
   return {
-    type: SUBMIT_TICKET_SUCCESS
+    type: SUBMIT_TICKET_SUCCESS,
+    message
   }
 }
 
-export function submitFailure() {
+export function submitFailure(message) {
   return {
-    type: SUBMIT_TICKET_FAILURE
+    type: SUBMIT_TICKET_FAILURE,
+    message
   }
 }
 
@@ -32,10 +35,15 @@ export function submitTicket(ticket) {
       headers: {'Authorization' : `Bearer ${authService.getAccessToken()}`}
     })
     .then(function(response) {
-        dispatch(submitSuccess());
+      dispatch(submitSuccess(response.data.message));
+      dispatch(reset('ticket'));
     })
     .catch(function(err){
-      dispatch(submitFailure());
+      let message = 'An error has ocurred';
+      if(err && err.response && err.response.data && err.response.data.message) {
+        message = err.response.data.message;
+      }
+      dispatch(submitFailure(message));
     })
   }
 }

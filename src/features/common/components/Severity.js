@@ -23,7 +23,7 @@ class Severity extends Component {
         className: 'severity__item--normal'
       },
       high: {
-        label: 'Normal',
+        label: 'High',
         value: 'high',
         description: 'Product application issue',
         className: 'severity__item--high'
@@ -41,8 +41,8 @@ class Severity extends Component {
 
   onClick(severity) {
     const { onChange } = this.props;
+    this.setState({selected: severity.value})
     onChange(severity.value);
-    this.setState({'selected': severity.value})
   }
 
   getItemClassName(severity) {

@@ -28,7 +28,9 @@
 }
 
 .is-focused:not(.is-open) > .Select-control {
-  border-color: $alto $silver $nobel;
+  border-color: $cornflower-blue;
+  box-shadow: $shadow;
+  outline: 0;
 }
 
 .Select {
@@ -54,4 +56,13 @@
 
 .required span{
     vertical-align:sub;
+}
+
+.Select-input {
+  display: inline-flex !important;
+  height: 100%;
+}
+
+.Select-input > input {
+  align-items: stretch;
 }

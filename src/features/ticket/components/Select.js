@@ -1,15 +1,14 @@
 import React from 'react';
-import Select from 'react-select';
+import ReactSelect from 'react-select';
 import 'react-select/dist/react-select.css';
 import HelpBlock from './HelpBlock';
 
-const MultiSelect = ({ input, value, label, placeholder, options, meta: { touched, error } }) => (
+const Select = ({ input, value, label, placeholder, options, meta: { touched, error } }) => (
   <div className="form-group">
     <label className="control-label">{label}</label>
     <div>
-      <Select
-        multi
-        value={value}
+      <ReactSelect
+        value={value || []}
         placeholder={placeholder}
         options={options}
         {...input}
@@ -19,4 +18,4 @@ const MultiSelect = ({ input, value, label, placeholder, options, meta: { touche
   </div>
 )
 
-export default MultiSelect;
+export default Select;
