@@ -1,3 +1,4 @@
+const env = require('./server/config/env');
 const webpack = require('webpack');
 const path = require('path');
 
@@ -41,9 +42,10 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': '"production"',
-        'AUTH_DOMAIN': JSON.stringify(process.env.AUTH_DOMAIN),
-        'AUTH_CALLBACK_URL': JSON.stringify(process.env.AUTH_CALLBACK_URL),
-        'AUTH_CLIENT_ID': JSON.stringify(process.env.AUTH_CLIENT_ID)
+        'AUTH_DOMAIN': JSON.stringify(env.AUTH_DOMAIN),
+        'AUTH_CALLBACK_URL': JSON.stringify(env.AUTH_CALLBACK_URL),
+        'AUTH_CLIENT_ID': JSON.stringify(env.AUTH_CLIENT_ID),
+        'AUTH_AUDIENCE': JSON.stringify(env.AUTH_AUDIENCE)
       }
    }),
   ],
