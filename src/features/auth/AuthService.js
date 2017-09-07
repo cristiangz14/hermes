@@ -11,9 +11,9 @@ export default class AuthService {
       domain: AUTH_CONFIG.domain,
       clientID: AUTH_CONFIG.clientId,
       redirectUri: AUTH_CONFIG.callbackUrl,
-      audience: `https://${AUTH_CONFIG.domain}/userinfo`,
+      audience: AUTH_CONFIG.audience,
       responseType: 'token id_token',
-      scope: 'openid profile'
+      scope: 'openid profile create:tickets'
     });
 
     this.login = this.login.bind(this);
@@ -31,12 +31,20 @@ export default class AuthService {
   handleAuthentication(onSuccess = noop, onFailure = noop) {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
-        this.setSession(authResult);
-        onSuccess(authResult.idToken);
-        history.replace('/');
+        this.auth0.client.userInfo(authResult.accessToken, (err, profile) => {
+          if(!err) {
+            authResult.profile = profile
+            this.setSession(authResult);
+            onSuccess(authResult.idToken, profile);
+            history.replace('/');
+          } else {
+            onFailure();
+            history.replace('/');
+          }
+        })
       } else if (err) {
-        history.replace('/');
         onFailure();
+        history.replace('/');
         alert(`Error: ${err.error}. Check the console for further details.`);
       }
     });
@@ -69,10 +77,7 @@ export default class AuthService {
     localStorage.setItem('access_token', authResult.accessToken);
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', expiresAt);
-
-    this.auth0.client.userInfo(authResult.accessToken, (err, profile) => {
-      localStorage.setItem('profile', JSON.stringify(profile));
-    });
+    localStorage.setItem('profile', JSON.stringify(authResult.profile));
     // navigate to the home route
     history.replace('/');
   }

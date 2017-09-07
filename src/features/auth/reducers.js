@@ -1,7 +1,8 @@
 import AuthService from './AuthService';
 import {
   LOGIN_SUCCESS,
-  LOGIN_FAILURE
+  LOGIN_FAILURE,
+  LOGOUT_SUCCESS
 } from './actions';
 
 const authService = new AuthService();
@@ -18,16 +19,25 @@ export default function reducers(state = initialState , action) {
       return {
         ...state,
         isAuthenticated: true,
-        token: action.token
+        token: action.token,
+        profile: action.profile
       };
       break;
     case LOGIN_FAILURE:
       return {
         ...state,
         isAuthenticated: false,
-        token: null
+        token: null,
+        profile: null
       };
       break;
+    case LOGOUT_SUCCESS:
+      return {
+        ...state,
+        isAuthenticated: false,
+        token: null,
+        profile: null
+      }
     default:
       return state;
   }

@@ -1,33 +1,29 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { login } from '../../auth/actions';
+import { login, logout } from '../../auth/actions';
 import Header from './Header';
 import Footer from './Footer';
 import Main from './Main';
 
 class App extends Component {
     render() {
-      const { isAuthenticated, login } = this.props;
+      const { isAuthenticated, login, logout, profile } = this.props;
       return (
         <div className="app">
-          {
-            !isAuthenticated && (
-                <button type="button"
-                  className="btn btn-primary"
-                  onClick={login}>
-                  Log In
-                </button>
-              )
-          }
-          {
-            isAuthenticated && (
-              <div>
-                <Header/>
-                <Main/>
-                <Footer/>
-              </div>
-              )
-          }
+          <Header isAuthenticated={isAuthenticated}
+            login={login}
+            logout={logout}
+            profile={profile}/>
+            {
+              !isAuthenticated && (
+                  <p>You are not logged in. Please log in.</p>
+                )
+            }
+            {
+              isAuthenticated && (
+                  <Main/>
+                )
+            }
         </div>
       );
     }
@@ -35,12 +31,14 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return {
-    isAuthenticated: state.auth.isAuthenticated
+    isAuthenticated: state.auth.isAuthenticated,
+    profile: state.auth.profile
   }
 }
 
 const mapDispatchToProps = {
-  login
+  login,
+  logout
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -14,9 +14,17 @@ class Ticket extends Component {
   }
 
   submit(values) {
+    const { profile } = this.props;
+
+    values.requestedBy = values.requestedBy || [];
+
     values.requestedBy = values.requestedBy.map((item) => {
       return item.value;
-    })
+    });
+
+    if(!values.requestedBy.length) {
+      values.requestedBy.push(profile.name);
+    }
 
     this.props.submitTicket(values);
   }
@@ -38,7 +46,8 @@ class Ticket extends Component {
 function mapStateToProps(state) {
   return {
     isSubmitting: state.ticket.isSubmitting,
-    customers: state.customers
+    customers: state.customers,
+    profile: state.auth.profile
   }
 }
 
