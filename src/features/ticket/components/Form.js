@@ -5,6 +5,7 @@ import Input from './Input';
 import TextArea from './TextArea';
 import Select from './Select';
 import Severity from './Severity';
+import MarkdownPreview from './MarkdownPreview';
 import Title from '../../common/components/Title';
 import Button from '../../common/components/Button';
 import Alert from '../../common/components/Alert';
@@ -29,10 +30,6 @@ let TicketForm = props => {
           type={submitSuccess ? "success" : "danger"}/>
       }
 
-      <Alert text={message}
-        timeout={5000}
-        type={submitSuccess ? "success" : "danger"}/>
-
       <Field name="subject"
         label="Subject *"
         type="text"
@@ -54,6 +51,10 @@ let TicketForm = props => {
         placeholder="Describe your problem"
         rows={4}
         component={TextArea} />
+
+        <Field name="description"
+          label="Preview"
+          component={MarkdownPreview} />
 
       <div className="form-group">
         <Button isSubmit

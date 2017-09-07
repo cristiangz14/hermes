@@ -10,11 +10,11 @@ class Navbar extends Component {
   render() {
     const { isAuthenticated, login, logout, profile } = this.props;
     return (
-      <div>
+      <div className="text-right" style={{margin: "0 20px"}}>
         {
           !isAuthenticated && (
             <button type="button"
-              className="btn btn-primary"
+              className="btn btn-success"
               onClick={login}>
               Log In
             </button>
@@ -23,7 +23,7 @@ class Navbar extends Component {
         {
           isAuthenticated && (
             <button type="button"
-              className="btn btn-primary"
+              className="btn btn-default"
               onClick={logout}>
               Log Out
             </button>

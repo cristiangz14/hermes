@@ -16,7 +16,7 @@ class App extends Component {
             profile={profile}/>
             {
               !isAuthenticated && (
-                  <p>You are not logged in. Please log in.</p>
+                  <p className="text-center">You are not logged in. Please log in.</p>
                 )
             }
             {
