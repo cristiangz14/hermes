@@ -1,32 +1,10 @@
 const Hapi = require('hapi');
-const Good = require('good');
-const env = require('./utils/env');
-
-const plugins = [{
-    register: Good,
-    options: {
-        reporters: {
-            console: [{
-                module: 'good-squeeze',
-                name: 'Squeeze',
-                args: [{
-                    response: '*',
-                    log: '*'
-                }]
-            }, {
-                module: 'good-console'
-            }, 'stdout']
-        }
-    }
-}, {
-  register: require('inert'),
-}, {
-  register: require('h2o2')
-}];
+const env = require('./config/env');
+const plugins = require('./config/plugins');
 
 const server = new Hapi.Server();
 
-server.connection({port: env.PORT || 3000});
+server.connection({port: env.PORT});
 
 server.register(plugins, (err) => {
 
