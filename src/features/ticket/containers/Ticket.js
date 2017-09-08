@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Form from '../components/Form';
+import { markdown } from 'markdown';
 
 import {
-  submitTicket
+  submitTicket,
+  resetForm
 } from '../actions';
 
 class Ticket extends Component {
@@ -22,7 +24,6 @@ class Ticket extends Component {
       email: profile.name
     }
 
-    //const requestedBy = this.mapToCustomer(values.requestedBy);
     const requestedBy = {
       name: values.requesterName,
       email: values.requesterEmail
@@ -50,14 +51,15 @@ class Ticket extends Component {
   }
 
   render() {
-    const { isSubmitting, submitSuccess, submitFailed, message, submitTicket, customers } = this.props;
+    const { isSubmitting, submitSuccess, submitFailed, message, submitTicket, customers, resetForm } = this.props;
     const props = {
       onSubmit: this.submit,
       isSubmitting,
       customers,
       submitSuccess,
       submitFailed,
-      message
+      message,
+      resetForm
     }
 
     return (
@@ -78,7 +80,8 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
-  submitTicket
+  submitTicket,
+  resetForm
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Ticket);

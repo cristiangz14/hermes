@@ -1,14 +1,14 @@
 import React from 'react';
 import { markdown } from 'markdown';
 import HelpBlock from './HelpBlock';
+import FieldWrapper from './FieldWrapper';
 
-const MarkdownPreview = ({ input, label }) => (
-  <div className={'form-group '}>
-    <label className="control-label">{label}</label>
+const Select = ({ label, input, meta: { touched, error } }) => (
+  <FieldWrapper {...{label}}>
     <div className="markdown-control">
       <div dangerouslySetInnerHTML={{ __html: markdown.toHTML(input.value) }}></div>
     </div>
-  </div>
+  </FieldWrapper>
 )
 
-export default MarkdownPreview;
+export default Select;

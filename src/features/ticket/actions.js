@@ -28,6 +28,12 @@ export function submitFailure(message) {
   }
 }
 
+export function resetForm() {
+  return function(dispatch) {
+    dispatch(reset('ticket'));
+  }
+}
+
 export function submitTicket(ticket) {
   return function(dispatch) {
     dispatch(submitting());
@@ -36,7 +42,7 @@ export function submitTicket(ticket) {
     })
     .then(function(response) {
       dispatch(submitSuccess(response.data.message));
-      dispatch(reset('ticket'));
+      resetForm()(dispatch);
     })
     .catch(function(err){
       let message = 'An error has ocurred';

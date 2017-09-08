@@ -12,7 +12,7 @@ import Alert from '../../common/components/Alert';
 import validate from './validate';
 
 let TicketForm = props => {
-  const { handleSubmit, isSubmitting, submitSuccess, submitFailed, message, customers } = props;
+  const { handleSubmit, isSubmitting, submitSuccess, submitFailed, message, customers, resetForm } = props;
 
   const options = customers.map(customer => {
     return {
@@ -68,7 +68,7 @@ let TicketForm = props => {
           isLoading={isSubmitting}
           />
         <Button text="CANCEL"
-          handleClick={() => {}}
+          handleClick={resetForm}
           />
       </div>
     </form>

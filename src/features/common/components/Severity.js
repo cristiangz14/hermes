@@ -5,10 +5,6 @@ class Severity extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      selected: props.value || ''
-    }
-
     this.severity = {
       low: {
         label: 'Low',
@@ -41,13 +37,12 @@ class Severity extends Component {
 
   onClick(severity) {
     const { onChange } = this.props;
-    this.setState({selected: severity.value})
     onChange(severity.value);
   }
 
   getItemClassName(severity) {
-    const { selected } = this.state;
-    const selectedClass = severity.value === selected ? 'severity__item--selected' : '';
+    const { value } = this.props;
+    const selectedClass = severity.value === value ? 'severity__item--selected' : '';
     return `severity__item ${selectedClass} ${severity.className}`;
   }
 
