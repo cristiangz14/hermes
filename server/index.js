@@ -31,8 +31,7 @@ server.register(plugins, (err) => {
         proxy: {
           host: env.API_HOST,
           port: env.API_PORT,
-          protocol: env.API_PROTOCOL,
-          passThrough: true,
+          protocol: env.API_PROTOCOL
         },
       }
     });
