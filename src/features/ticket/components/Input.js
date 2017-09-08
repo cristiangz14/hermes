@@ -1,5 +1,4 @@
 import React from 'react';
-import HelpBlock from './HelpBlock';
 import FieldWrapper from './FieldWrapper';
 
 const Input = ({ input, label, type, placeholder, meta: { touched, error } }) => (

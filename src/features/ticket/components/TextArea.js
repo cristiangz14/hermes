@@ -1,5 +1,4 @@
 import React from 'react';
-import HelpBlock from './HelpBlock';
 import FieldWrapper from './FieldWrapper';
 
 const TextArea = ({ input, label, placeholder, rows, meta: { touched, error } }) => (

@@ -10,6 +10,7 @@ import Title from '../../common/components/Title';
 import Button from '../../common/components/Button';
 import Alert from '../../common/components/Alert';
 import validate from './validate';
+import Description from './Description';
 
 let TicketForm = props => {
   const { handleSubmit, isSubmitting, submitSuccess, submitFailed, message, customers, resetForm } = props;
@@ -50,15 +51,10 @@ let TicketForm = props => {
         label="Severity *"
         component={Severity}/>
 
-      <Field name="description"
-        label="Description *"
-        placeholder="Describe your problem"
-        rows={4}
-        component={TextArea} />
-
         <Field name="description"
-          label="Preview"
-          component={MarkdownPreview} />
+          placeholder="Describe your problem"
+          rows={4}
+          component={Description} />
 
       <div className="form-group">
         <Button isSubmit
