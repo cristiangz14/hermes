@@ -65,6 +65,7 @@ let TicketForm = props => {
           />
         <Button text="CANCEL"
           handleClick={resetForm}
+          isLoading={isSubmitting}
           />
       </div>
     </form>

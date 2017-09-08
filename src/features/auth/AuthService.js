@@ -13,7 +13,7 @@ export default class AuthService {
       redirectUri: AUTH_CONFIG.callbackUrl,
       audience: AUTH_CONFIG.audience,
       responseType: 'token id_token',
-      scope: 'openid profile create:tickets'
+      scope: 'openid profile email create:tickets'
     });
 
     this.login = this.login.bind(this);

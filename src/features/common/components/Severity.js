@@ -33,6 +33,8 @@ class Severity extends Component {
     }
 
     this.onClick = this.onClick.bind(this);
+    this.getItemClassName = this.getItemClassName.bind(this);
+    this.renderItem = this.renderItem.bind(this);
   }
 
   onClick(severity) {

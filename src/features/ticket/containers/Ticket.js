@@ -20,8 +20,8 @@ class Ticket extends Component {
     const { profile, customers } = this.props;
 
     const submittedBy = {
-      name: profile.nickname,
-      email: profile.name
+      name: profile.name,
+      email: profile.email
     }
 
     const requestedBy = {
