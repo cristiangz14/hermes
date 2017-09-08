@@ -36,11 +36,15 @@ let TicketForm = props => {
         placeholder="Give a subject to your ticket"
         component={Input} />
 
-      <Field name="requestedBy"
-        label="Requested by"
-        placeholder="Choose a requester"
-        options={options}
-        component={Select}/>
+      <Field name="requesterName"
+        label="Requester's name"
+        type="text"
+        component={Input} />
+
+      <Field name="requesterEmail"
+        label="Requester's email"
+        type="email"
+        component={Input} />
 
       <Field name="severity"
         label="Severity *"

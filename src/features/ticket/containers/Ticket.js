@@ -22,7 +22,11 @@ class Ticket extends Component {
       email: profile.name
     }
 
-    const requestedBy = this.mapToCustomer(values.requestedBy);
+    //const requestedBy = this.mapToCustomer(values.requestedBy);
+    const requestedBy = {
+      name: values.requesterName,
+      email: values.requesterEmail
+    }
 
     this.props.submitTicket({...values, requestedBy, submittedBy});
   }
