@@ -10,46 +10,46 @@ const authService = new AuthService();
 
 export function submitting() {
   return {
-    type: SUBMIT_TICKET_REQUEST
-  }
+    type: SUBMIT_TICKET_REQUEST,
+  };
 }
 
 export function submitSuccess(message) {
   return {
     type: SUBMIT_TICKET_SUCCESS,
-    message
-  }
+    message,
+  };
 }
 
 export function submitFailure(message) {
   return {
     type: SUBMIT_TICKET_FAILURE,
-    message
-  }
+    message,
+  };
 }
 
 export function resetForm() {
-  return function(dispatch) {
+  return function (dispatch) {
     dispatch(reset('ticket'));
-  }
+  };
 }
 
 export function submitTicket(ticket) {
-  return function(dispatch) {
+  return function (dispatch) {
     dispatch(submitting());
     axios.post('/api/tickets', ticket, {
-      headers: {'Authorization' : `Bearer ${authService.getAccessToken()}`}
+      headers: { Authorization: `Bearer ${authService.getAccessToken()}` },
     })
-    .then(function(response) {
-      dispatch(submitSuccess(response.data.message));
-      resetForm()(dispatch);
-    })
-    .catch(function(err){
-      let message = 'An error has ocurred';
-      if(err && err.response && err.response.data && err.response.data.message) {
-        message = err.response.data.message;
-      }
-      dispatch(submitFailure(message));
-    })
-  }
+      .then((response) => {
+        dispatch(submitSuccess(response.data.message));
+        resetForm()(dispatch);
+      })
+      .catch((err) => {
+        let message = 'An error has ocurred';
+        if (err && err.response && err.response.data && err.response.data.message) {
+          message = err.response.data.message;
+        }
+        dispatch(submitFailure(message));
+      });
+  };
 }

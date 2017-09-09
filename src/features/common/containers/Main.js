@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Ticket from '../../ticket/containers/Ticket';
 
-const Main = (props) => (
+const Main = props => (
   <main className="container-fluid">
     <div className="row">
       <div className="col-xs-3">
@@ -12,6 +12,6 @@ const Main = (props) => (
       </div>
     </div>
   </main>
-)
+);
 
 export default Main;

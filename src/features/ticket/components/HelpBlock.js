@@ -1,6 +1,6 @@
 import React from 'react';
 
-const getClassName = type => {
+const getClassName = (type) => {
   let className = '';
   switch (type) {
     case 'error':
@@ -11,10 +11,10 @@ const getClassName = type => {
   }
 
   return `alert ${className} help-block`;
-}
+};
 
 const HelpBlock = ({ type, message }) => (
-    <div className={getClassName(type)}>{message}</div>
-)
+  <div className={getClassName(type)}>{message}</div>
+);
 
 export default HelpBlock;

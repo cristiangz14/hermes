@@ -4,7 +4,7 @@ import 'react-select/dist/react-select.css';
 import FieldWrapper from './FieldWrapper';
 
 const Select = ({ input, label, value, placeholder, options, meta: { touched, error } }) => (
-  <FieldWrapper {...{label, touched, error}}>
+  <FieldWrapper {...{ label, touched, error }}>
     <ReactSelect
       value={value || []}
       placeholder={placeholder}
@@ -12,6 +12,6 @@ const Select = ({ input, label, value, placeholder, options, meta: { touched, er
       {...input}
       onBlur={() => input.onBlur(value)}/>
   </FieldWrapper>
-)
+);
 
 export default Select;

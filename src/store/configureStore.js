@@ -1,7 +1,6 @@
-const PRODUCTION = process.env.NODE_ENV === "production";
+import configStoreDev from './configureStore.dev';
+import configStoreProd from './configureStore.prod';
 
-if (PRODUCTION) {
-  module.exports = require('./configureStore.prod');
-} else {
-  module.exports = require('./configureStore.dev');
-}
+const PRODUCTION = process.env.NODE_ENV === 'production';
+
+export default PRODUCTION ? configStoreProd : configStoreDev;

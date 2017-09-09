@@ -1,13 +1,9 @@
-const isBlank = (value) => {
-  return (!value || /^\s*$/.test(value))
-}
+const isBlank = value => (!value || /^\s*$/.test(value));
 
-const isEmail = (email) => {
-  return /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email);
-}
+const isEmail = email => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email);
 
-const validate = values => {
-  const errors = {}
+const validate = (values) => {
+  const errors = {};
 
   if (isBlank(values.subject)) {
     errors.subject = 'Please input the subject';
@@ -25,15 +21,15 @@ const validate = values => {
     errors.requesterEmail = 'Please input a valid email';
   }
 
-  if((!isBlank(values.requesterName) && isBlank(values.requesterEmail))) {
+  if ((!isBlank(values.requesterName) && isBlank(values.requesterEmail))) {
     errors.requesterEmail = 'Please input the email';
   }
 
-  if((!isBlank(values.requesterEmail) && isBlank(values.requesterName))) {
+  if ((!isBlank(values.requesterEmail) && isBlank(values.requesterName))) {
     errors.requesterName = 'Please input the name';
   }
 
-  return errors
-}
+  return errors;
+};
 
-export default validate
+export default validate;

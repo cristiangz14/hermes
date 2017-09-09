@@ -1,11 +1,10 @@
-import history from '../../history';
 import auth0 from 'auth0-js';
-import { AUTH_CONFIG } from './auth0-variables';
+import history from '../../history';
+import AUTH_CONFIG from './auth0-variables';
 
-const noop = () => {}
+const noop = () => {};
 
 export default class AuthService {
-
   constructor() {
     this.auth0 = new auth0.WebAuth({
       domain: AUTH_CONFIG.domain,
@@ -13,7 +12,7 @@ export default class AuthService {
       redirectUri: AUTH_CONFIG.callbackUrl,
       audience: AUTH_CONFIG.audience,
       responseType: 'token id_token',
-      scope: 'openid profile email create:tickets'
+      scope: 'openid profile email create:tickets',
     });
 
     this.login = this.login.bind(this);
@@ -31,31 +30,29 @@ export default class AuthService {
   handleAuthentication(onSuccess = noop, onFailure = noop) {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
-        this.auth0.client.userInfo(authResult.accessToken, (err, profile) => {
-          if(!err) {
-            authResult.profile = profile
-            this.setSession(authResult);
+        this.auth0.client.userInfo(authResult.accessToken, (error, profile) => {
+          if (!error) {
+            this.setSession({ ...authResult, profile });
             onSuccess(authResult.idToken, profile);
             history.replace('/');
           } else {
             onFailure();
             history.replace('/');
           }
-        })
+        });
       } else if (err) {
         onFailure();
         history.replace('/');
-        alert(`Error: ${err.error}. Check the console for further details.`);
       }
     });
   }
 
   getIdToken() {
-    return localStorage.getItem('id_token');
+    return localStorage.getItem('id_token'); // eslint-disable-line
   }
 
   getAccessToken() {
-    const accessToken = localStorage.getItem('access_token');
+    const accessToken = localStorage.getItem('access_token'); // eslint-disable-line
     if (!accessToken) {
       throw new Error('No access token found');
     }
@@ -63,8 +60,8 @@ export default class AuthService {
   }
 
   getProfile() {
-    let profile = localStorage.getItem('profile');
-    if(!profile) {
+    let profile = localStorage.getItem('profile'); // eslint-disable-line
+    if (!profile) {
       return null;
     }
 
@@ -73,11 +70,13 @@ export default class AuthService {
 
   setSession(authResult) {
     // Set the time that the access token will expire at
-    let expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
+    /* eslint-disable no-undef */
+    const expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
     localStorage.setItem('access_token', authResult.accessToken);
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', expiresAt);
     localStorage.setItem('profile', JSON.stringify(authResult.profile));
+    /* eslint-disable no-undef */
     // navigate to the home route
     history.replace('/');
   }
@@ -95,7 +94,7 @@ export default class AuthService {
   isAuthenticated() {
     // Check whether the current time is past the
     // access token's expiry time
-    let expiresAt = JSON.parse(localStorage.getItem('expires_at'));
+    const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
     return !!this.getIdToken() && (new Date().getTime() < expiresAt);
   }
 }

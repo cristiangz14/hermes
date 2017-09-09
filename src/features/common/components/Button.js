@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class Button extends Component {
-
   constructor(props) {
     super(props);
 
@@ -39,7 +38,7 @@ class Button extends Component {
         disabled={isLoading}>
         {isLoading && loadingText ? loadingText : text}
       </button>
-    )
+    );
   }
 }
 
@@ -49,7 +48,7 @@ Button.propTypes = {
   isLoading: PropTypes.bool,
   text: PropTypes.string,
   loadingText: PropTypes.string,
-  handleClick: PropTypes.func
+  handleClick: PropTypes.func,
 };
 
 export default Button;

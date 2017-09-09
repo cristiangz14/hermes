@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 class Severity extends Component {
-
   constructor(props) {
     super(props);
 
@@ -10,27 +9,27 @@ class Severity extends Component {
         label: 'Low',
         value: 'low',
         description: 'Product question',
-        className: 'severity__item--low'
+        className: 'severity__item--low',
       },
       normal: {
         label: 'Normal',
         value: 'normal',
         description: 'General support issue',
-        className: 'severity__item--normal'
+        className: 'severity__item--normal',
       },
       high: {
         label: 'High',
         value: 'high',
         description: 'Product application issue',
-        className: 'severity__item--high'
+        className: 'severity__item--high',
       },
       urgent: {
         label: 'Urgent',
         value: 'urgent',
         description: 'Product application offline',
-        className: 'severity__item--urgent'
-      }
-    }
+        className: 'severity__item--urgent',
+      },
+    };
 
     this.onClick = this.onClick.bind(this);
     this.getItemClassName = this.getItemClassName.bind(this);
@@ -49,7 +48,6 @@ class Severity extends Component {
   }
 
   renderItem(severity) {
-
     return (
       <button type="button" onClick={() => this.onClick(severity)} className={this.getItemClassName(severity)}>
         <div className="severity__item__priority">
@@ -58,7 +56,7 @@ class Severity extends Component {
         </div>
         <div className="severity__item__decription">{severity.description}</div>
       </button>
-    )
+    );
   }
 
   render() {
@@ -70,7 +68,7 @@ class Severity extends Component {
         {this.renderItem(severity.high)}
         {this.renderItem(severity.urgent)}
       </div>
-    )
+    );
   }
 }
 

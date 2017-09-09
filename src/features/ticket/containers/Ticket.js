@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Form from '../components/Form';
 import { markdown } from 'markdown';
+import Form from '../components/Form';
 
 import {
   submitTicket,
-  resetForm
+  resetForm,
 } from '../actions';
 
 class Ticket extends Component {
-
   constructor(props) {
     super(props);
     this.submit = this.submit.bind(this);
@@ -21,29 +20,27 @@ class Ticket extends Component {
 
     const submittedBy = {
       name: profile.name,
-      email: profile.email
-    }
+      email: profile.email,
+    };
 
     const requestedBy = {
       name: values.requesterName,
-      email: values.requesterEmail
-    }
+      email: values.requesterEmail,
+    };
 
-    this.props.submitTicket({...values, requestedBy, submittedBy});
+    this.props.submitTicket({ ...values, requestedBy, submittedBy });
   }
 
-  mapToCustomer( value ) {
-    if(!value) {
+  mapToCustomer(value) {
+    if (!value) {
       return null;
     }
 
     const { customers } = this.props;
 
-    const index = customers.findIndex((customer) => {
-      return customer.email === value.value;
-    });
+    const index = customers.findIndex(customer => customer.email === value.value);
 
-    if(index >= 0) {
+    if (index >= 0) {
       return customers[index];
     }
 
@@ -51,7 +48,7 @@ class Ticket extends Component {
   }
 
   render() {
-    const { isSubmitting, submitSuccess, submitFailed, message, submitTicket, customers, resetForm } = this.props;
+    const { isSubmitting, submitSuccess, submitFailed, message, submitTicket, customers, resetForm } = this.props; // eslint-disable-line no-shadow
     const props = {
       onSubmit: this.submit,
       isSubmitting,
@@ -59,12 +56,12 @@ class Ticket extends Component {
       submitSuccess,
       submitFailed,
       message,
-      resetForm
-    }
+      resetForm,
+    };
 
     return (
-        <Form {...props}/>
-    )
+      <Form {...props}/>
+    );
   }
 }
 
@@ -75,13 +72,13 @@ function mapStateToProps(state) {
     submitSuccess: state.ticket.submitSuccess,
     message: state.ticket.message,
     customers: state.customers,
-    profile: state.auth.profile
-  }
+    profile: state.auth.profile,
+  };
 }
 
 const mapDispatchToProps = {
   submitTicket,
-  resetForm
-}
+  resetForm,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Ticket);

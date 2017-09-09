@@ -1,27 +1,26 @@
 import React, { Component } from 'react';
-import MarkdownPreview from  './MarkdownPreview';
+import MarkdownPreview from './MarkdownPreview';
 import TextArea from './TextArea';
 
 class Description extends Component {
-
   constructor(props) {
     super(props);
 
     this.tabs = {
       description: 1,
-      preview: 2
-    }
+      preview: 2,
+    };
 
     this.state = {
-      activedTab: this.tabs.description
-    }
+      activedTab: this.tabs.description,
+    };
   }
 
-  changeActivedTab( tabId ) {
-    this.setState({activedTab: tabId})
+  changeActivedTab(tabId) {
+    this.setState({ activedTab: tabId });
   }
 
-  isActivedTab( tabId ) {
+  isActivedTab(tabId) {
     return this.state.activedTab === tabId;
   }
 
@@ -31,21 +30,21 @@ class Description extends Component {
     return (
       <div>
         <ul className="nav nav-tabs">
-          <li className={this.isActivedTab(description) ? "active" : ""}>
+          <li className={this.isActivedTab(description) ? 'active' : ''}>
             <a href="#!" onClick={() => this.changeActivedTab(description)}>Desription *</a>
           </li>
-          <li className={this.isActivedTab(preview) ? "active" : ""}>
+          <li className={this.isActivedTab(preview) ? 'active' : ''}>
             <a href="#!" onClick={() => this.changeActivedTab(preview)}>Preview</a>
           </li>
         </ul>
-        <div className={!this.isActivedTab(description) ? "hide" : ""}>
+        <div className={!this.isActivedTab(description) ? 'hide' : ''}>
           <TextArea {...this.props}/>
         </div>
-        <div className={!this.isActivedTab(preview) ? "hide" : ""}>
+        <div className={!this.isActivedTab(preview) ? 'hide' : ''}>
           <MarkdownPreview value={input.value}/>
         </div>
       </div>
-    )
+    );
   }
 }
 

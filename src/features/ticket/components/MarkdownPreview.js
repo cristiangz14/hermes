@@ -8,6 +8,6 @@ const MarkdownPreview = ({ value }) => (
       <div dangerouslySetInnerHTML={{ __html: markdown.toHTML(value) }}></div>
     </div>
   </FieldWrapper>
-)
+);
 
 export default MarkdownPreview;

@@ -6,38 +6,38 @@ import Footer from './Footer';
 import Main from './Main';
 
 class App extends Component {
-    render() {
-      const { isAuthenticated, login, logout, profile } = this.props;
-      return (
-        <div className="app">
-          <Header isAuthenticated={isAuthenticated}
-            login={login}
-            logout={logout}
-            profile={profile}/>
-            {
-              !isAuthenticated && (
-                <p className="text-center">You are not logged in. Please log in.</p>
-              )
-            }
-            {
-              isAuthenticated &&
+  render() {
+    const { isAuthenticated, login, logout, profile } = this.props; // eslint-disable-line no-shadow
+    return (
+      <div className="app">
+        <Header isAuthenticated={isAuthenticated}
+          login={login}
+          logout={logout}
+          profile={profile}/>
+        {
+          !isAuthenticated && (
+            <p className="text-center">You are not logged in. Please log in.</p>
+          )
+        }
+        {
+          isAuthenticated &&
                 <Main/>
-            }
-        </div>
-      );
-    }
+        }
+      </div>
+    );
+  }
 }
 
 function mapStateToProps(state) {
   return {
     isAuthenticated: state.auth.isAuthenticated,
-    profile: state.auth.profile
-  }
+    profile: state.auth.profile,
+  };
 }
 
 const mapDispatchToProps = {
   login,
-  logout
-}
+  logout,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

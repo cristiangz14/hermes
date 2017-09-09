@@ -14,22 +14,22 @@ const handleAuthentication = (nextState, dispatch) => {
     const authService = new AuthService();
     authService.handleAuthentication(success, failure);
   }
-}
+};
 
-const MainRoutes = ({ dispatch }) =>  (
+const MainRoutes = ({ dispatch }) => (
   <Router history={history} component={App}>
     <div>
-      <Route path="/" render={(props) => <App {...props} />} />
+      <Route path="/" render={props => <App {...props} />} />
       <Route path="/callback" render={(props) => {
         handleAuthentication(props, dispatch);
-        return <Callback {...props} />
+        return <Callback {...props} />;
       }}/>
     </div>
   </Router>
 );
 
 MainRoutes.propTypes = {
-  dispatch: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired,
 };
 
 export default MainRoutes;

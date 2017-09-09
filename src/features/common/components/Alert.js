@@ -2,14 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class Alert extends Component {
-
   constructor(props) {
     super(props);
 
     this.state = {
       visible: true,
-      timeout: props.timeout || 3000
-    }
+      timeout: props.timeout || 3000,
+    };
 
     this.getClassName = this.getClassName.bind(this);
     this.close = this.close.bind(this);
@@ -23,7 +22,7 @@ class Alert extends Component {
   }
 
   close() {
-    this.setState({'visible': false})
+    this.setState({ visible: false });
   }
 
   getClassName() {
@@ -33,7 +32,7 @@ class Alert extends Component {
     let className;
     switch (type) {
       case 'success':
-         className = 'alert-success';
+        className = 'alert-success';
         break;
       case 'danger':
         className = 'alert-danger';
@@ -56,13 +55,13 @@ class Alert extends Component {
         </button>
         {text}
       </div>
-    )
+    );
   }
 }
 
 Alert.propTypes = {
   type: PropTypes.string,
-  text: PropTypes.string
+  text: PropTypes.string,
 };
 
 export default Alert;

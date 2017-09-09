@@ -1,16 +1,16 @@
 const initialState = [
   {
     name: 'Jon Doe',
-    email: 'john.doe@company.com'
+    email: 'john.doe@company.com',
   },
   {
     name: 'Jon Snow',
-    email: 'john.snow@company.com'
+    email: 'john.snow@company.com',
   },
   {
     name: 'Danny Targaryen',
-    email: 'danny.targaryen@company.com'
-  }
+    email: 'danny.targaryen@company.com',
+  },
 ];
 
 export default function reducers(state = initialState, action) {

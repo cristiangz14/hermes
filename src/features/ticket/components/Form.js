@@ -12,15 +12,13 @@ import Alert from '../../common/components/Alert';
 import validate from './validate';
 import Description from './Description';
 
-let TicketForm = props => {
+let TicketForm = (props) => { // eslint-disable-line import/no-mutable-exports
   const { handleSubmit, isSubmitting, submitSuccess, submitFailed, message, customers, resetForm } = props;
 
-  const options = customers.map(customer => {
-    return {
-      value: customer.email,
-      label: `${customer.name} (${customer.email})`
-    }
-  });
+  const options = customers.map(customer => ({
+    value: customer.email,
+    label: `${customer.name} (${customer.email})`,
+  }));
 
   return (
     <form onSubmit={ handleSubmit }>
@@ -28,7 +26,7 @@ let TicketForm = props => {
       {(submitSuccess || submitFailed) && message &&
         <Alert text={message}
           timeout={5000}
-          type={submitSuccess ? "success" : "danger"}/>
+          type={submitSuccess ? 'success' : 'danger'}/>
       }
 
       <Field name="subject"
@@ -51,10 +49,10 @@ let TicketForm = props => {
         label="Severity *"
         component={Severity}/>
 
-        <Field name="description"
-          placeholder="Describe your problem"
-          rows={4}
-          component={Description} />
+      <Field name="description"
+        placeholder="Describe your problem"
+        rows={4}
+        component={Description} />
 
       <div className="form-group">
         <Button isSubmit
@@ -62,25 +60,25 @@ let TicketForm = props => {
           text="SUBMIT"
           loadingText="SUBMITTING..."
           isLoading={isSubmitting}
-          />
+        />
         <Button text="CANCEL"
           handleClick={resetForm}
           isLoading={isSubmitting}
-          />
+        />
       </div>
     </form>
-  )
-}
+  );
+};
 
 TicketForm = reduxForm({
   form: 'ticket',
-  validate
-})(TicketForm)
+  validate,
+})(TicketForm);
 
-/*TicketForm.propTypes = {
+/* TicketForm.propTypes = {
   customers: PropTypes.array,
   isSubmitting: PropTypes.bool,
   handleSubmit: PropTypes.func.isRequired
-};*/
+}; */
 
 export default TicketForm;

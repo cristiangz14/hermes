@@ -5,7 +5,7 @@ class Title extends Component {
     const { text, className } = this.props;
     return (
       <h1 className={className}>{text}</h1>
-    )
+    );
   }
 }
 
