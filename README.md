@@ -1,7 +1,7 @@
 # Hermes Client
 Auth0 internal tool that allows the Auth0 Engineers to create tickets in Zendesk on behalf of a customer.
 
-### Auth0 Account
+## Auth0 Account
 The Auth implemented this project is based on [SPA + API guide](https://auth0.com/docs/architecture-scenarios/application/spa-api). In order to config the Auth account follow the guide and make sure a SPA Client and API is created.
 
 
@@ -23,7 +23,7 @@ API_PROTOCOL=http
 PORT=3000
 ```
 * **AUTH_DOMAIN** : Auth0 account domain.
-* **AUTH_AUDIENCE**: API identifier. It allows the end-users authenticate againts the API.
+* **AUTH_AUDIENCE**: API identifier. It allows the end-users authenticate agains the API.
 * **AUTH_CLIENT_ID**: Auth0 client id.
 * **AUTH_CALLBACK_URL**: URL which Auth0 will redirect after login successfully.
 * **API_HOST**: API host. API endpoint which the SPA will call to create tickets. See [API project](https://github.com/cristiangz14/hermes_api)

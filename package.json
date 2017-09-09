@@ -16,8 +16,17 @@
     "type": "git",
     "url": "git+https://github.com/cristiangz14/hermes_client"
   },
-  "author": "Cristian Granada",
-  "license": "ISC",
+  "keywords": [
+    "zendesk",
+    "auth0",
+    "spa"
+  ],
+  "author": "Cristian Granada <cristiangranada14@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cristiangz14/hermes_api/issues"
+  },
+  "homepage": "https://github.com/cristiangz14/hermes_api#readme",
   "dependencies": {
     "auth0-js": "^8.9.3",
     "axios": "^0.16.2",
