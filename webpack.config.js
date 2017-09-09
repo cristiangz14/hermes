@@ -47,7 +47,12 @@ module.exports = {
       {
         test: /\.(eot|svg|ttf|woff|woff2|gif)$/,
         loader: 'file-loader',
-      }
+      }/*,
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loaders: ['babel-loader', 'eslint-loader']
+      }*/
     ]
   },
   plugins: [

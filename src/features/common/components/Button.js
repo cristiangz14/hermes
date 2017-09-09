@@ -16,6 +16,9 @@ class Button extends Component {
       case 'primary':
         className = 'btn-primary';
         break;
+      case 'success':
+        className = 'btn-success';
+        break;
       case 'transparent':
         className = 'btn-transparent';
         break;
