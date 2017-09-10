@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Severity extends Component {
   constructor(props) {
@@ -71,5 +72,10 @@ class Severity extends Component {
     );
   }
 }
+
+Severity.propTypes = {
+  onChange: PropTypes.func,
+  value: PropTypes.string,
+};
 
 export default Severity;

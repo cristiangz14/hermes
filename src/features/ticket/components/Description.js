@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import MarkdownPreview from './MarkdownPreview';
 import TextArea from './TextArea';
 
@@ -47,5 +48,11 @@ class Description extends Component {
     );
   }
 }
+
+Description.propTypes = {
+  input: PropTypes.object,
+  description: PropTypes.element,
+  preview: PropTypes.element,
+};
 
 export default Description;

@@ -2,7 +2,7 @@ import {
   SUBMIT_TICKET_REQUEST,
   SUBMIT_TICKET_SUCCESS,
   SUBMIT_TICKET_FAILURE,
-} from './actions';
+} from '../../redux/actionTypes';
 
 const initialState = {
   isSubmitting: false,

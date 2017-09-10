@@ -62,6 +62,7 @@ class Alert extends Component {
 Alert.propTypes = {
   type: PropTypes.string,
   text: PropTypes.string,
+  timeout: PropTypes.number,
 };
 
 export default Alert;

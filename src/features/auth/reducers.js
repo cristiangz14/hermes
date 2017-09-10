@@ -3,7 +3,8 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
   LOGOUT_SUCCESS,
-} from './actions';
+  LOGOUT_FAILURE,
+} from '../../redux/actionTypes';
 
 const authService = new AuthService();
 

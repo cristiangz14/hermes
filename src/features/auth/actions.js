@@ -1,45 +1,31 @@
 import AuthService from './AuthService';
 
-export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
-export const LOGIN_FAILURE = 'LOGIN_FAILURE';
-export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
-export const LOGOUT_FAILURE = 'LOGOUT_FAILURE';
+import {
+  LOGIN_SUCCESS,
+  LOGIN_FAILURE,
+  LOGOUT_SUCCESS,
+  LOGOUT_FAILURE,
+} from '../../redux/actionTypes';
 
 const authService = new AuthService();
 
-export function loginSuccess(token, profile) {
-  return {
-    type: LOGIN_SUCCESS,
-    token,
-    profile,
-  };
-}
+export const loginSuccess = (token, profile) => ({
+  type: LOGIN_SUCCESS,
+  token,
+  profile,
+});
 
-export function loginFailure() {
-  return {
-    type: LOGIN_FAILURE,
-  };
-}
+export const loginFailure = () => ({ type: LOGIN_FAILURE });
 
-export function logoutSuccess() {
-  return {
-    type: LOGOUT_SUCCESS,
-  };
-}
+export const logoutSuccess = () => ({ type: LOGOUT_SUCCESS });
 
-export function logoutFailure() {
-  return {
-    type: LOGOUT_SUCCESS,
-  };
-}
+export const logoutFailure = () => ({ type: LOGOUT_SUCCESS });
 
-export function login() {
+export const login = () => {
   authService.login();
-}
+};
 
-export function logout() {
-  return function (dispatch) {
-    authService.logout();
-    dispatch(logoutSuccess());
-  };
-}
+export const logout = () => (dispatch) => {
+  authService.logout();
+  dispatch(logoutSuccess());
+};

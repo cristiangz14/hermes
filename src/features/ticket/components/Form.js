@@ -15,11 +15,6 @@ import Description from './Description';
 let TicketForm = (props) => { // eslint-disable-line import/no-mutable-exports
   const { handleSubmit, isSubmitting, submitSuccess, submitFailed, message, customers, resetForm } = props;
 
-  const options = customers.map(customer => ({
-    value: customer.email,
-    label: `${customer.name} (${customer.email})`,
-  }));
-
   return (
     <form onSubmit={ handleSubmit }>
       <Title text="New Ticket"/>
@@ -74,11 +69,5 @@ TicketForm = reduxForm({
   form: 'ticket',
   validate,
 })(TicketForm);
-
-/* TicketForm.propTypes = {
-  customers: PropTypes.array,
-  isSubmitting: PropTypes.bool,
-  handleSubmit: PropTypes.func.isRequired
-}; */
 
 export default TicketForm;

@@ -11,12 +11,11 @@ import {
 class Ticket extends Component {
   constructor(props) {
     super(props);
-    this.submit = this.submit.bind(this);
-    this.mapToCustomer = this.mapToCustomer.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  submit(values) {
-    const { profile, customers } = this.props;
+  handleSubmit(values) {
+    const { profile } = this.props;
 
     const submittedBy = {
       name: profile.name,
@@ -31,50 +30,20 @@ class Ticket extends Component {
     this.props.submitTicket({ ...values, requestedBy, submittedBy });
   }
 
-  mapToCustomer(value) {
-    if (!value) {
-      return null;
-    }
-
-    const { customers } = this.props;
-
-    const index = customers.findIndex(customer => customer.email === value.value);
-
-    if (index >= 0) {
-      return customers[index];
-    }
-
-    return null;
-  }
-
   render() {
-    const { isSubmitting, submitSuccess, submitFailed, message, submitTicket, customers, resetForm } = this.props; // eslint-disable-line no-shadow
-    const props = {
-      onSubmit: this.submit,
-      isSubmitting,
-      customers,
-      submitSuccess,
-      submitFailed,
-      message,
-      resetForm,
-    };
-
     return (
-      <Form {...props}/>
+      <Form onSubmit={this.handleSubmit} {...this.props}/>
     );
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    isSubmitting: state.ticket.isSubmitting,
-    submitFailed: state.ticket.submitFailed,
-    submitSuccess: state.ticket.submitSuccess,
-    message: state.ticket.message,
-    customers: state.customers,
-    profile: state.auth.profile,
-  };
-}
+const mapStateToProps = ({ ticket: { isSubmitting, submitFailed, submitSuccess, message }, auth: { profile } }) => ({
+  isSubmitting,
+  submitFailed,
+  submitSuccess,
+  message,
+  profile,
+});
 
 const mapDispatchToProps = {
   submitTicket,

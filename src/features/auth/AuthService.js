@@ -68,14 +68,14 @@ export default class AuthService {
     return JSON.parse(profile);
   }
 
-  setSession(authResult) {
+  setSession({ expiresIn, accessToken, idToken, profile }) {
     // Set the time that the access token will expire at
     /* eslint-disable no-undef */
-    const expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
-    localStorage.setItem('access_token', authResult.accessToken);
-    localStorage.setItem('id_token', authResult.idToken);
+    const expiresAt = JSON.stringify((expiresIn * 1000) + new Date().getTime());
+    localStorage.setItem('access_token', accessToken);
+    localStorage.setItem('id_token', idToken);
     localStorage.setItem('expires_at', expiresAt);
-    localStorage.setItem('profile', JSON.stringify(authResult.profile));
+    localStorage.setItem('profile', JSON.stringify(profile));
     /* eslint-disable no-undef */
     // navigate to the home route
     history.replace('/');

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { login, logout } from '../../auth/actions';
 import Header from './Header';
 import Footer from './Footer';
@@ -28,12 +29,17 @@ class App extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    isAuthenticated: state.auth.isAuthenticated,
-    profile: state.auth.profile,
-  };
-}
+App.propTypes = {
+  isAuthenticated: PropTypes.bool.isRequired,
+  login: PropTypes.func.isRequired,
+  logout: PropTypes.func.isRequired,
+  profile: PropTypes.object,
+};
+
+const mapStateToProps = ({ auth: { isAuthenticated, profile } }) => ({
+  isAuthenticated,
+  profile,
+});
 
 const mapDispatchToProps = {
   login,
