@@ -18,7 +18,7 @@ let TicketForm = (props) => { // eslint-disable-line import/no-mutable-exports
   return (
     <form onSubmit={ handleSubmit }>
       <Title text="New Ticket"/>
-      {(submitSuccess || submitFailed) && message &&
+      {message &&
         <Alert text={message}
           timeout={5000}
           type={submitSuccess ? 'success' : 'danger'}/>

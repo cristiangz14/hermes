@@ -37,6 +37,7 @@ export const submitTicket = ticket => (dispatch) => {
       resetForm()(dispatch);
     })
     .catch((err) => {
+      console.log(JSON.stringify(err))
       let message = 'An error has ocurred';
       if (err && err.response && err.response.data && err.response.data.message) {
         message = err.response.data.message;
