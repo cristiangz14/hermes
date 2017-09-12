@@ -15,19 +15,16 @@ class Ticket extends Component {
   }
 
   handleSubmit(values) {
-    const { profile } = this.props;
-
-    const submittedBy = {
-      name: profile.name,
-      email: profile.email,
-    };
 
     const requestedBy = {
       name: values.requesterName,
       email: values.requesterEmail,
     };
 
-    this.props.submitTicket({ ...values, requestedBy, submittedBy });
+    delete values.requesterName;
+    delete values.requesterEmail;
+
+    this.props.submitTicket({ ...values, requestedBy });
   }
 
   render() {
